@@ -1,7 +1,5 @@
 package com.bailiny.linkedlist;
 
-import javax.swing.*;
-
 public class SingleLinkedListDemo {
 
     public static void main(String[] args) {
