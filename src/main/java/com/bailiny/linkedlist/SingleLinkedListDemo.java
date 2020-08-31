@@ -1,5 +1,7 @@
 package com.bailiny.linkedlist;
 
+import javax.swing.*;
+
 public class SingleLinkedListDemo {
 
     public static void main(String[] args) {
@@ -25,18 +27,23 @@ public class SingleLinkedListDemo {
         linkedList.update(hero2update);
         System.out.println("修改后~~~~~");
         linkedList.list();
-        System.out.println("删除后~~~~~");
+        /*System.out.println("删除后~~~~~");
         linkedList.delete(1);
         linkedList.delete(4);
-        linkedList.list();
+        linkedList.list();*/
         // 测试求链表的长度
         System.out.println("单链表的长度：" + getLength(linkedList.getHead()));
         // 测试查找倒数第k的节点
         System.out.println("倒数第一个节点为：" + findLastIndexNode(linkedList.getHead(), 1));
+        // 测试反转
+        System.out.println("反转后~~~~~");
+        reverse(linkedList.getHead());
+        linkedList.list();
     }
 
     /**
      * 获取单链表的长度
+     *
      * @param headNode
      * @return
      */
@@ -55,6 +62,7 @@ public class SingleLinkedListDemo {
 
     /**
      * 查找倒数第k个节点
+     *
      * @param head
      * @param index
      * @return
@@ -72,6 +80,27 @@ public class SingleLinkedListDemo {
             cur = cur.next;
         }
         return cur;
+    }
+
+    /**
+     * 反转链表
+     *
+     * @param head
+     */
+    public static void reverse(HeroNode head) {
+        if (head.next == null || head.next.next == null) {
+            System.out.println("链表为空，不能反转");
+            return;
+        }
+        HeroNode newHeroNode = new HeroNode(0, "", "");
+        HeroNode temp;
+        while (head.next != null) {
+            temp = head.next;
+            head.next = temp.next;
+            temp.next = newHeroNode.next;
+            newHeroNode.next = temp;
+        }
+        head.next = newHeroNode.next;
     }
 }
 
