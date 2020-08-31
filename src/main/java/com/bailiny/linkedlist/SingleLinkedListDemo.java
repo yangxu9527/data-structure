@@ -40,6 +40,23 @@ public class SingleLinkedListDemo {
     }
 
     /**
+     * 合并两个有序链表，合并后依然有序
+     * @param headNode1
+     * @param headNode2
+     */
+    public static void merge(HeroNode headNode1, HeroNode headNode2) {
+
+    }
+
+    /**
+     * TODO 从尾到头打印链表
+     * @param headNode
+     */
+    public static void reversePrint(HeroNode headNode) {
+
+    }
+
+    /**
      * 获取单链表的长度
      *
      * @param headNode
