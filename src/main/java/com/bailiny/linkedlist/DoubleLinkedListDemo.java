@@ -14,6 +14,9 @@ public class DoubleLinkedListDemo {
         linkedList.add(hero4);
         System.out.println("添加后~~~");
         linkedList.list();
+        System.out.println("删除后~~~");
+        linkedList.delete(5);
+        linkedList.list();
     }
 
 
@@ -71,9 +74,44 @@ class DoubleLinkedList {
      * @param newHeroNode
      */
     public void update(HeroNode2 newHeroNode) {
+        if (head.next == null) {
+            System.out.println("链表为空");
+            return;
+        }
+
+        HeroNode2 temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                // 已经遍历完毕
+                break;
+            }
+            if (temp.no == newHeroNode.no) {
+                // 找到了
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        // 根据flag判断是否找到要修改的节点
+        if (flag) {
+            temp.nickname = newHeroNode.nickname;
+            temp.name = newHeroNode.name;
+        } else {
+            System.out.printf("没有找到编号%d的英雄", newHeroNode.no);
+        }
     }
 
     public void delete(int no) {
+        HeroNode2 temp = head;
+        while (temp.next != null) {
+            if (no == temp.no) {
+                temp.pre.next = temp.next;
+                temp.next.pre = temp.pre;
+                break;
+            }
+            temp = temp.next;
+        }
 
     }
 
