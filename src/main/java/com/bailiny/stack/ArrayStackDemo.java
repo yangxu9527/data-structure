@@ -2,7 +2,7 @@ package com.bailiny.stack;
 
 public class ArrayStackDemo {
     public static void main(String[] args) {
-        ArrayStack stack = new ArrayStack(5);
+        ArrayStack2 stack = new ArrayStack2(5);
         stack.push(1);
         stack.push(2);
         stack.show();
