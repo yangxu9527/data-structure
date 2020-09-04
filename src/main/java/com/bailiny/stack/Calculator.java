@@ -2,14 +2,16 @@ package com.bailiny.stack;
 
 public class Calculator {
     public static void main(String[] args) {
-        String expression = "3+2*9-6";
+        String expression = "30+120*9-600";
         char[] chars = expression.toCharArray();
         ArrayStack2 numStack = new ArrayStack2(10);
         ArrayStack2 operStack = new ArrayStack2(10);
         int num1 = 0;
         int num2 = 0;
         char oper = ' ';
-        for (char ch : chars) {
+        String keepNum = "";
+        for (int i = 0; i < chars.length; i++) {
+            char ch = chars[i];
             if (operStack.isOper(ch)) {
                 // 如果是符号并且为空时直接放入
                 if (operStack.isEmpty()) {
@@ -28,7 +30,17 @@ public class Calculator {
                     }
                 }
             } else {
-                numStack.push(ch - 48);
+                // numStack.push(ch - 48);
+                keepNum += ch;
+                if (i == chars.length -1){
+                    numStack.push(Integer.parseInt(keepNum));
+                } else {
+                    if (operStack.isOper(chars[i + 1])) {
+                        numStack.push(Integer.parseInt(keepNum));
+                        keepNum = "";
+                    }
+                }
+
             }
         }
 
