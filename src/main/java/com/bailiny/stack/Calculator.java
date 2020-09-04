@@ -9,28 +9,37 @@ public class Calculator {
         int num1 = 0;
         int num2 = 0;
         char oper = ' ';
-        for (char aChar : chars) {
-            if (operStack.isOper(aChar)) {
+        for (char ch : chars) {
+            if (operStack.isOper(ch)) {
                 // 如果是符号并且为空时直接放入
                 if (operStack.isEmpty()) {
-                    operStack.push(aChar);
+                    operStack.push(ch);
                 } else {
-                    if (operStack.priority(aChar) <= operStack.priority(operStack.peek())) {
+                    if (operStack.priority(ch) <= operStack.priority(operStack.peek())) {
                         // 优先级小于等于栈顶的符号，则把数字栈中的数取出两个，符号栈中取出一个进行运算，并将运算后的结果放入数字栈中
                         num1 = numStack.pop();
                         num2 = numStack.pop();
                         oper = (char) operStack.pop();
                         numStack.push(numStack.cal(num1, num2, oper));
-
+                        operStack.push(ch);
                     } else {
                         // 直接入栈
-                        operStack.push(aChar);
+                        operStack.push(ch);
                     }
                 }
+            } else {
+                numStack.push(ch - 48);
             }
         }
 
-        System.out.println(numStack.pop());
+        while (!operStack.isEmpty()) {
+            num1 = numStack.pop();
+            num2 = numStack.pop();
+            oper = (char) operStack.pop();
+            numStack.push(numStack.cal(num1, num2, oper));
+        }
+
+        System.out.printf("表达式%s = %d", expression, numStack.pop());
     }
 }
 
@@ -97,7 +106,7 @@ class ArrayStack2 {
     }
 
     public boolean isOper(char val) {
-        return val == '*' || val == '/' || val == '*' || val == '-';
+        return val == '+' || val == '/' || val == '*' || val == '-';
     }
 
     public int cal(int num1, int num2, char oper) {
@@ -105,11 +114,11 @@ class ArrayStack2 {
             case '+':
                 return num1 + num2;
             case '-':
-                return num1 - num2;
+                return num2 - num1;
             case '*':
                 return num1 * num2;
             case '/':
-                return num1 / num2;
+                return num2 / num1;
             default:
                 return 0;
         }
