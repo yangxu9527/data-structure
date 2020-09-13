@@ -17,11 +17,11 @@ public class SelectSort {
         // 从左向右遍历，当前值从右向左依次和前面一个值和前前个值进行比较，如果小于前面的值则依次后移，直到
         int insetVal;
         int insertIndex;
-        // 2.依次和前面的进行比较，寻找插入的位置
         for (int i = 1; i < arr.length; i++) {
             // 1.定义待插入的值和索引
             insetVal = arr[i];
             insertIndex = i - 1;
+            // 2.依次和前面的进行比较，寻找插入的位置
             while (insertIndex >= 0 && insetVal < arr[insertIndex]) {
                 // 当待插入的值小于当前值时表示没有找到待插入的位置,则后移
                 arr[insertIndex + 1] = arr[insertIndex];
