@@ -14,8 +14,8 @@ public class MergeSort {
             System.out.println(arr[i]);
         }*/
 
-        int[] arr1 = {1,2,3,4};
-        int[] arr2 = {1,4,5,7};
+        int[] arr1 = {1, 2, 3, 4};
+        int[] arr2 = {1, 4, 5, 7};
         System.out.println(Arrays.toString(mergeArr(arr1, arr2)));
     }
 

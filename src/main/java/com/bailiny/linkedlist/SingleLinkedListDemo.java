@@ -41,6 +41,7 @@ public class SingleLinkedListDemo {
 
     /**
      * 合并两个有序链表，合并后依然有序
+     *
      * @param headNode1
      * @param headNode2
      */
@@ -50,6 +51,7 @@ public class SingleLinkedListDemo {
 
     /**
      * TODO 从尾到头打印链表
+     *
      * @param headNode
      */
     public static void reversePrint(HeroNode headNode) {
