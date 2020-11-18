@@ -32,7 +32,7 @@ public class Calculator {
             } else {
                 // numStack.push(ch - 48);
                 keepNum += ch;
-                if (i == chars.length -1){
+                if (i == chars.length - 1) {
                     numStack.push(Integer.parseInt(keepNum));
                 } else {
                     if (operStack.isOper(chars[i + 1])) {
